@@ -71,30 +71,26 @@ cnoremap <C-K>		<C-U>
 cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
 
-" Map ½ to something useful
-map ½ $
-cmap ½ $
-imap ½ $
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Parenthesis/bracket
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-vnoremap $1 <esc>`>a)<esc>`<i(<esc>
-vnoremap $2 <esc>`>a]<esc>`<i[<esc>
-vnoremap $3 <esc>`>a}<esc>`<i{<esc>
-vnoremap $$ <esc>`>a"<esc>`<i"<esc>
-vnoremap $q <esc>`>a'<esc>`<i'<esc>
-vnoremap $e <esc>`>a`<esc>`<i`<esc>
+vnoremap ùp <esc>`>a)<esc>`<i(<esc>
+vnoremap ù& <esc>`>a]<esc>`<i[<esc>
+vnoremap ùé <esc>`>a}<esc>`<i{<esc>
+vnoremap ùù <esc>`>a"<esc>`<i"<esc>
+vnoremap ùq <esc>`>a'<esc>`<i'<esc>
+vnoremap ùe <esc>`>a"<esc>`<i"<esc>
 
-" Map auto complete of (, ", ', [
-inoremap $1 ()<esc>i
-inoremap $2 []<esc>i
-inoremap $3 {}<esc>i
-inoremap $4 {<esc>o}<esc>O
-inoremap $q ''<esc>i
-inoremap $e ""<esc>i
+inoremap ùp ()<esc>i
+inoremap ù& []<esc>i
+inoremap ùé {}<esc>i
+inoremap ùù {<esc>o}<esc>O
+inoremap ùq ''<esc>i
+inoremap ùe ""<esc>i
+inoremap ù<enter> <esc>A ;<enter>
 
+nnoremap ù<enter> A ;<enter>
+nnoremap ùù A {<esc>o}<esc>O
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General abbreviations
@@ -144,6 +140,12 @@ map <leader>p :cp<cr>
 
 " Make sure that enter is never overriden in the quickfix window
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Look for tag file (ctags)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set tags+=../tags
+nnoremap <C-i> <C-]>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
