@@ -200,11 +200,9 @@ vnoremap <silent> = :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-"map <space> /
-"map <C-space> ?
-map <space> :normal! <C-R>=winheight('%')."gj"<cr><cr>
-map <c-space> :normal! <C-R>=winheight('%')."gk"<cr><cr>
+" Map <Space> to scroll window loke in `less`
+"map <space> :normal! <C-R>=winheight('%')-2*&scrolloff<cr><C-e><cr>
+noremap <space> <C-f>
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
@@ -228,15 +226,17 @@ map <leader>ba :bufdo bd<cr>
 map <S-l> :bnext<cr>
 map <S-h> :bprevious<cr>
 
-" Let <C-k> toggle between this and the last accessed buffer
+" Let <C-j> toggle between this and the last accessed buffer
 nmap <S-j> :b#<cr>
 
 " Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
+map <leader>ti :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
-map <leader>t<leader> :tabnext<cr>
+map <leader>tm :tabmove 
+map <leader>t<leader> :tabnext 
+map <leader>tn :tabnext<cr>
+map <leader>tp :tabprevious<cr>
 
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
@@ -272,6 +272,20 @@ set laststatus=2
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
 
 
+"""""""""""""""""""""""""""""
+" => Show Column color
+"""""""""""""""""""""""""""""
+"execute "set colorcolumn=" . join(range(79,335), ',')
+set colorcolumn=80
+autocmd BufEnter * highlight ColorColumn ctermbg=0
+
+
+"""""""""""""""""""""""""""""
+" => Change Split line
+"""""""""""""""""""""""""""""
+set fillchars+=vert:\ 
+au BufEnter * hi VertSplit ctermbg=238
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -298,12 +312,19 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Pressing ,ss will toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>
+autocmd BufEnter * setlocal spellfile+=localspell.utf-8.add
 
 " Shortcuts using <leader>
+" next unknown word
 map <leader>sn ]s
+" previous unknown word
 map <leader>sp [s
+" add unknown word to dictionary
 map <leader>sa zg
-map <leader>s? z=
+" add unknown word to local dictionary
+map <leader>sl 2zg
+" list of possible corrections
+map <leader>sh z=
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
