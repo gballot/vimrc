@@ -99,7 +99,8 @@ let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let NERDTreeQuitOnOpen = 1
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd BufWinEnter * let s:notagoption=NoTagOption()
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && s:notagoption | NERDTree | endif
 "autocmd VimEnter * execute "normal \<C-L>"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -187,14 +188,13 @@ nnoremap <silent> <leader>d :GitGutterToggle<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => EditorConfig (project-specific EditorConfig rule)
+" => Functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:EditorConfig_exclude_patterns = ['fugitive://.*']
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Fugitive
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Copy the link to the line of a Git repository to the clipboard
-nnoremap <leader>v :.GBrowse!<CR>
-xnoremap <leader>v :GBrowse!<CR>
+function NoTagOption()
+  let l:invoccmd=split(system('ps -o command= -p ' . getpid()))
+  "set l:invoccmd=execute(echo split(system('ps -o command= -p ' . getpid())))
+  if index(l:invoccmd, '-t') > 0
+    return 0
+  endif
+  return 1
+endfunction

@@ -173,6 +173,11 @@ set noswapfile
 " Use spaces instead of tabs
 set expandtab
 
+" No auto-close brackets
+let g:autoclose_on = 0
+let g:AutoPairs = {}
+
+
 " Be smart when using tabs ;)
 set smarttab
 
