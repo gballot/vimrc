@@ -144,7 +144,7 @@ autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Look for tag file (ctags)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set tags+=../tags
+set tags+=.git/tags,../tags,../.git/tags
 nnoremap <C-i> <C-]>
 
 
