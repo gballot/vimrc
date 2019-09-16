@@ -166,7 +166,8 @@ nnoremap <silent> <leader>z :Goyo<cr>
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'python': ['flake8'],
-\   'go': ['go', 'golint', 'errcheck']
+\   'go': ['go', 'golint', 'errcheck'],
+\   'c': ['gcc']
 \}
 
 nmap <silent> <leader>a <Plug>(ale_next_wrap)
@@ -179,6 +180,17 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
 let g:ale_virtualtext_cursor = 'disabled'
 
+augroup cpp_ale_config
+         autocmd FileType cpp let g:custom_cpp_options = Filify#process('.ale_config', {'default_return':'-std=c11 -Wall'})
+         autocmd FileType cpp let g:ale_cpp_clang_options = g:custom_cpp_options
+         autocmd FileType cpp let g:ale_cpp_gcc_options = g:custom_cpp_options
+augroup END
+
+augroup c_ale_config
+         autocmd FileType c let g:custom_cpp_options = Filify#process('.ale_config', {'default_return':'-std=c11 -Wall'})
+         autocmd FileType c let g:ale_c_clang_options = g:custom_c_options
+         autocmd FileType c let g:ale_c_gcc_options = g:custom_c_options
+augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Git gutter (Git diff)
