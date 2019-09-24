@@ -187,7 +187,7 @@ augroup cpp_ale_config
 augroup END
 
 augroup c_ale_config
-         autocmd FileType c let g:custom_cpp_options = Filify#process('.ale_config', {'default_return':'-std=c11 -Wall'})
+         autocmd FileType c let g:custom_c_options = Filify#process('.ale_config', {'default_return':'-std=c11 -Wall'})
          autocmd FileType c let g:ale_c_clang_options = g:custom_c_options
          autocmd FileType c let g:ale_c_gcc_options = g:custom_c_options
 augroup END
