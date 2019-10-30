@@ -281,8 +281,10 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 " => Show Column color
 """""""""""""""""""""""""""""
 "execute "set colorcolumn=" . join(range(81,335), ',')
-set colorcolumn=80,81
-autocmd BufEnter * highlight ColorColumn ctermbg=232 ctermfg=1
+autocmd Filetype c set colorcolumn=80,81
+autocmd Filetype cpp set colorcolumn=80,81
+autocmd Filetype c highlight ColorColumn ctermbg=232 ctermfg=1
+autocmd Filetype cpp highlight ColorColumn ctermbg=232 ctermfg=1
 "autocmd BufEnter * highlight ColorColumn ctermfg=1
 
 
