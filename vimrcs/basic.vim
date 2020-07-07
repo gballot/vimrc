@@ -121,6 +121,9 @@ endif
 " Add a bit extra margin to the left
 set foldcolumn=0
 
+" Disable folding lines
+autocmd BufEnter * setlocal nofoldenable
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -283,8 +286,10 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 "execute "set colorcolumn=" . join(range(81,335), ',')
 autocmd Filetype c set colorcolumn=80,81
 autocmd Filetype cpp set colorcolumn=80,81
+autocmd Filetype markdown set colorcolumn=80,81
 autocmd Filetype c highlight ColorColumn ctermbg=232 ctermfg=1
 autocmd Filetype cpp highlight ColorColumn ctermbg=232 ctermfg=1
+autocmd Filetype markdown highlight ColorColumn ctermbg=232 ctermfg=1
 "autocmd BufEnter * highlight ColorColumn ctermfg=1
 
 

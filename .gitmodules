@@ -1,0 +1,6 @@
+[submodule "sources_non_forked/vim-jsx-pretty"]
+	path = sources_non_forked/vim-jsx-pretty
+	url = https://github.com/MaxMEllon/vim-jsx-pretty.git
+[submodule "sources_non_forked/vim-js"]
+	path = sources_non_forked/vim-js
+	url = https://github.com/yuezk/vim-js.git
