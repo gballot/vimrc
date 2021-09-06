@@ -163,6 +163,8 @@ nnoremap <silent> <leader>z :Goyo<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Ale (syntax checker and linter)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let b:ale_fixers = {'python': ['black', 'isort'], 'javascript': ['eslint']}
+
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'python': ['flake8'],
