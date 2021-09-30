@@ -287,9 +287,11 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 autocmd Filetype c set colorcolumn=80,81
 autocmd Filetype cpp set colorcolumn=80,81
 autocmd Filetype markdown set colorcolumn=80,81
+autocmd Filetype tex set colorcolumn=80,81
 autocmd Filetype c highlight ColorColumn ctermbg=232 ctermfg=1
 autocmd Filetype cpp highlight ColorColumn ctermbg=232 ctermfg=1
 autocmd Filetype markdown highlight ColorColumn ctermbg=232 ctermfg=1
+autocmd Filetype tex highlight ColorColumn ctermbg=232 ctermfg=1
 "autocmd BufEnter * highlight ColorColumn ctermfg=1
 
 
@@ -326,6 +328,9 @@ endif
 " Pressing ,ss will toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>
 autocmd BufEnter * setlocal spellfile+=localspell.utf-8.add
+
+autocmd Filetype markdown setlocal spell
+autocmd Filetype tex setlocal spell
 
 " Shortcuts using <leader>
 " next unknown word
