@@ -6627,7 +6627,7 @@ function! fugitive#Diffsplit(autodir, keepfocus, mods, arg, ...) abort
   let commit = s:DirCommitFile(@%)[1]
   if a:mods =~# '\<\d*tab\>'
     let mods = substitute(a:mods, '\<\d*tab\>', '', 'g')
-    let pre = matchstr(a:mods, '\<\d*tab\>') . 'edit'
+    let pre = matchstr(a:mods, '\<\d*tab\>') . ' split'
   else
     let mods = 'keepalt ' . a:mods
     let pre = ''
@@ -7437,7 +7437,9 @@ function! s:BrowserOpen(url, mods, echo_copy) abort
     if !exists('g:loaded_netrw')
       runtime! autoload/netrw.vim
     endif
-    if exists('*netrw#BrowseX')
+    if exists('*netrw#Open')
+      return 'echo '.string(url).'|' . mods . 'call netrw#Open('.string(url).')'
+    elseif exists('*netrw#BrowseX')
       return 'echo '.string(url).'|' . mods . 'call netrw#BrowseX('.string(url).', 0)'
     elseif exists('*netrw#NetrwBrowseX')
       return 'echo '.string(url).'|' . mods . 'call netrw#NetrwBrowseX('.string(url).', 0)'
