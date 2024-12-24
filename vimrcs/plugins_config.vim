@@ -169,6 +169,7 @@ let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'python': ['flake8'],
 \   'go': ['go', 'golint', 'errcheck'],
+\   'haskell': ['cabal_ghc', 'ghc-mod', 'hdevtools', 'hie', 'hlint', 'stack_build', 'stack_ghc'],
 \   'c': ['gcc']
 \}
 
