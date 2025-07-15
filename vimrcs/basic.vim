@@ -271,6 +271,10 @@ map <leader>ba :bufdo bd<cr>
 map <S-l> :bnext<cr>
 map <S-h> :bprevious<cr>
 
+" Remove f1 opens help menu
+map <F1> <nop>
+imap <F1> <nop>
+
 " Let <C-j> toggle between this and the last accessed buffer
 nmap <S-j> :b#<cr>
 
